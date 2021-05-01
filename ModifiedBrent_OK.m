@@ -3,17 +3,17 @@ function [root,info] = ModifiedBrent_OK(func, Int, params)
 % Modified Brent Method Algorithm
 %
 % Input:
-%   [func]   : Function, f(x)
-%   [Int]    : Inteveral, [a,b] where x ∈ [a,b] for all x
+%   [func]   : Function, f(x), for approximation
+%   [Int]    : Inteveral, [x0,x1], where x0 ≤ x ≤ x1  for all x
 %   [params] : Conditions for convergence and iteration
 %       params.func_tol : f(x) < func_tol          ⇒ algorithm stops.
 %       params.root_tol : x < root_tol             ⇒ algorithm stops.
 %       params.maxit    : count(iteration) > maxit ⇒ algorithm fails. 
 %
 % Output:
-%   [root] : Approximated point s.t. f(root) = 0.
+%   [root] : Approximated point where f(root) ≈ 0.
 %   [info] : Number of iterations and success flag.
-%       info.flag : succeeded ⇔ 0, failed ⇔ 1.
+%       info.flag : succeeded ⇒ 0, failed ⇒ 1.
 %       info.it   : count(current_iterations)
 %
 %------------------------------------------------------------------------
