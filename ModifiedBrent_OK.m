@@ -6,9 +6,9 @@ function [root,info] = ModifiedBrent_OK(func, Int, params)
 %   [func]: Function for approximation.
 %   [Int] : Interval that sets limit of approximation.
 %   [params] : Conditions for tolerances and max iterations.
-%       params.func_tol : f(x) < func_tol ➞ algorithm stops.
-%       params.root_tol : x < root_tol ➞ algorithm stops.
-%       params.maxit : count(iteration) > maxit ➞ algorithm fails. 
+%       params.func_tol : f(x) < func_tol          ➞ algorithm stops.
+%       params.root_tol : x < root_tol             ➞ algorithm stops.
+%       params.maxit    : count(iteration) > maxit ➞ algorithm fails. 
 %
 % Output:
 %   [root] : Approximated point s.t. func(root) = 0.
@@ -98,5 +98,5 @@ while abs(x1-x0) > params.root_tol && info.it <= params.maxit
         prev_x0 = x0; prev_x1 = x1;
     end
 end
-info.flag = info.it > params.maxit;                 % Exceeded max iteration? Yes = 1 = Failed, No = 0 = Succeed
+info.flag = info.it > params.maxit;                 % Exceeded max iteration? Yes = Failed = 1, No = Succeed = 0
 root = new;
