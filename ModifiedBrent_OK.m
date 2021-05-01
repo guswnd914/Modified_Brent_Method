@@ -5,7 +5,7 @@ function [root,info] = ModifiedBrent_OK(func, Int, params)
 % Input:
 %   [func]   : Function, f(x), for approximation
 %   [Int]    : Inteveral, [x0,x1], where x0 ≤ x ≤ x1  for all x
-%   [params] : Conditions for convergence and iteration
+%   [params] : Capped criteria for convergence and iteration
 %       params.func_tol : f(x) < func_tol            ⇒ algorithm stops.
 %       params.root_tol : x < root_tol               ⇒ algorithm stops.
 %       params.maxit    : count(iteration) > maxit   ⇒ algorithm fails. 
