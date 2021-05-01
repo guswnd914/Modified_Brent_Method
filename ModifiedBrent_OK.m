@@ -6,9 +6,9 @@ function [root,info] = ModifiedBrent_OK(func, Int, params)
 %   [func]   : Function, f(x), for approximation
 %   [Int]    : Inteveral, [x0,x1], where x0 ≤ x ≤ x1  for all x
 %   [params] : Capped criteria for convergence and iteration
-%       params.func_tol : f(x) < func_tol            ⇒ algorithm stops.
-%       params.root_tol : x < root_tol               ⇒ algorithm stops.
-%       params.maxit    : count(iteration) > maxit   ⇒ algorithm fails. 
+%       params.func_tol : f(x) < func_tol     ⇒ f(x) is converged ⇒ algorithm stops.
+%       params.root_tol : x < root_tol        ⇒ x is converged    ⇒ algorithm stops.
+%       params.maxit    : count(iter) > maxit ⇒ iter is exceeded  ⇒ algorithm fails. 
 %
 % Output:
 %   [root] : Approximated point where f(root) ≈ 0.
