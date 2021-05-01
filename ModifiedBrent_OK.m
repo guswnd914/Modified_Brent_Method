@@ -3,18 +3,18 @@ function [root,info] = ModifiedBrent_OK(func, Int, params)
 % Modified Brent Method Algorithm
 %
 % Input:
-%   [func]: Function for approximation.
-%   [Int] : Interval that sets limit of approximation.
-%   [params] : Conditions for tolerances and max iterations.
-%       params.func_tol : f(x) < func_tol          ➞ algorithm stops.
-%       params.root_tol : x < root_tol             ➞ algorithm stops.
-%       params.maxit    : count(iteration) > maxit ➞ algorithm fails. 
+%   [func]   : Function, f(x)
+%   [Int]    : Inteveral / Boundary s.t. x ∈ [a,b] for all x
+%   [params] : Conditions for convergence and iteration
+%       params.func_tol : f(x) < func_tol          ⇒ algorithm stops.
+%       params.root_tol : x < root_tol             ⇒ algorithm stops.
+%       params.maxit    : count(iteration) > maxit ⇒ algorithm fails. 
 %
 % Output:
-%   [root] : Approximated point s.t. func(root) = 0.
+%   [root] : Approximated point s.t. f(root) = 0.
 %   [info] : Number of iterations and success flag.
-%       info.flag : succeed ➞ 0, failed ➞ 1.
-%       info.it : count of iterations
+%       info.flag : succeeded ⇔ 0, failed ⇔ 1.
+%       info.it   : count(current_iterations)
 %
 %------------------------------------------------------------------------
 % >> func = @(x) 10e-12*(exp(x) - x^2 -2)
