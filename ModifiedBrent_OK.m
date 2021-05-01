@@ -79,10 +79,10 @@ while abs(x1-x0) > params.root_tol && info.it <= params.maxit
         fnew = func(new);
         step = 0;
     end
-    if abs(fnew) < params.func_tol                  % Stop if f(x) is converged
+    if abs(fnew) < params.func_tol                  % Stop if fx is converged
         break
     end
-    if abs(fnew) < abs(fx1)                         % previous fx < current fx always
+    if abs(fnew) < abs(fx1)                         % previous_fx < current_fx always
         prev_fx = fnew;
     end
     x2 = x1;
