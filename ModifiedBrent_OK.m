@@ -98,5 +98,5 @@ while abs(x1-x0) > params.root_tol && info.it <= params.maxit
         prev_x0 = x0; prev_x1 = x1;
     end
 end
-info.flag = info.it > params.maxit;                 % Exceeded max iteration? If yes, then 
+info.flag = info.it > params.maxit;                 % Exceeded max iteration? Yes = 1 = Failed, No = 0 = Succeed
 root = new;
