@@ -6,14 +6,14 @@ function [root,info] = ModifiedBrent_OK(func, Int, params)
 %   [func]: Function for approximation.
 %   [Int] : Interval that sets limit of approximation.
 %   [params] : Conditions for tolerances and max iterations.
-%       params.func_tol : if f(x) < func_tol then algorithm stops.
-%       params.root_tol : if x < root_tol then algorithm stops.
-%       params.maxit : if no. iteration > maxit, then algorithm fails. 
+%       params.func_tol : f(x) < func_tol ➞ algorithm stops.
+%       params.root_tol : x < root_tol ➞ algorithm stops.
+%       params.maxit : count(iteration) > maxit ➞ algorithm fails. 
 %
 % Output:
 %   [root] : Approximated point s.t. func(root) = 0.
-%   [info] : Number of iterations and successibility.
-%       info.flag : 0 if succeed, 1 if failed.
+%   [info] : Number of iterations and success flag.
+%       info.flag : succeed ➞ 0, failed ➞ 1.
 %       info.it : count of iterations
 %
 %------------------------------------------------------------------------
@@ -74,7 +74,7 @@ while abs(x1-x0) > params.root_tol && info.it <= params.maxit
         tmp = x1;
     end
     step = step + (abs(new-tmp) > abs(prev_x1-prev_x0)/2);
-    if step == 5 || abs(fnew) > abs(prev_fx)/2      % Bisection
+    if step == 5 || abs(fnew) > abs(prev_fx)/2      % Bisection Criteria
         new = (x0+x1) / 2;
         fnew = func(new);
         step = 0;
