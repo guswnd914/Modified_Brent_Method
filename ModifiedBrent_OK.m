@@ -13,14 +13,14 @@ function [root,info] = ModifiedBrent_OK(func, Int, params)
 % Output:
 %   [root] : Approximated point s.t. func(root) = 0.
 %   [info] : Number of iterations and successibility.
-%       info.flag <- 0 if failed, 1 if succeed.
+%       info.flag <- 0 if succeed, 1 if failed.
 %       info.it <- count of iterations
 %
 %------------------------------------------------------------------------
 % >> func = @(x) 10e-12*(exp(x) - x^2 -2)
 % >> Int = [-1, 3]
 % >> params.root_tol = 1e-15; params.func_tol = 1e-15; params.maxit = 100;
-% >> [root, inf0] = ModifiedBrent_OK(func, Int, params)
+% >> [root, info] = ModifiedBrent_OK(func, Int, params)
 %
 % root = 
 %
