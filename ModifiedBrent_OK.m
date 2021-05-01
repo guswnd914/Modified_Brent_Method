@@ -1,6 +1,3 @@
-% Author: Otto Kwon (Math 128A, Spring 2021, UC Berkeley)
-% Source: Wilkins, G., Gu, M. (2012). A modified Brent,s method for finding zeros of functions. Numerische Mathematik, 123(1), 177–188.
-%
 function [root,info] = ModifiedBrent_OK(func, Int, params)
 %
 % Modified Brent Method Algorithm
@@ -21,9 +18,6 @@ function [root,info] = ModifiedBrent_OK(func, Int, params)
 %   [info] : Number of iterations and successibility.
 %       info.flag <- 0 if failed, 1 if succeed.
 %       info.it <- count of iterations
-%
-% This code aims to approximate one specific value within [Int] such that plugging the value in [func] results 0. 
-% How close does it approximate depends on what values you put in [params].
 %
 %------------------------------------------------------------------------
 % >> func = @(x) 10e-12*(exp(x) - x^2 -2)
