@@ -5,6 +5,8 @@ How close it approximates depends on which numbers are assigned in **params** *(
 
 #### -- Otto Kwon (Math 128A, Spring 2021, Berkeley)
 
+
+
 **Source:** Wilkins, G., Gu, M. (2012). A modified Brent,s method for finding zeros of functions. Numerische Mathematik, 123(1), 177–188.
 
 
