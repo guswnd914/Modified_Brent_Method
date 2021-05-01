@@ -4,14 +4,11 @@ function [root,info] = ModifiedBrent_OK(func, Int, params)
 %
 % Input:
 %   [func]: Function for approximation.
-%       {ex. func = @(x) exp(x) - (2 + 2*x.^2)}
 %   [Int] : Interval that sets limit of approximation.
-%       {ex. int = [1, 100]}
 %   [params] : Conditions for tolerances and max iterations.
 %       params.func_tol : if f(x) < func_tol then algorithm stops.
 %       params.root_tol : if x < root_tol then algorithm stops.
 %       params.maxit : if no. iteration > maxit, then algorithm fails. 
-%       {ex. [func_tol, root_tol, maxit] = [10e-5, 10e-5, 1000]}
 %
 % Output:
 %   [root] : Approximated point s.t. func(root) = 0.
