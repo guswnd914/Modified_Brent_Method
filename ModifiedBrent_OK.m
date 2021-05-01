@@ -4,7 +4,7 @@ function [root,info] = ModifiedBrent_OK(func, Int, params)
 %
 % Input:
 %   [func]   : Function, f(x)
-%   [Int]    : Inteveral / Boundary s.t. x ∈ [a,b] for all x
+%   [Int]    : Inteveral, [a,b] where x ∈ [a,b] for all x
 %   [params] : Conditions for convergence and iteration
 %       params.func_tol : f(x) < func_tol          ⇒ algorithm stops.
 %       params.root_tol : x < root_tol             ⇒ algorithm stops.
