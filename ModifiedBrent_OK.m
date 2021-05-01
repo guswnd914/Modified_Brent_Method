@@ -39,8 +39,9 @@ x0 = Int(1);                                        % Initials
 x1 = Int(2);
 fx0 = func(x0); 
 fx1 = func(x1);
+step = 0;                                           % Successive interpolation steps 
 info.it = 0;
-if (fx0*fx1) > 0 || params.maxit <= 0               % Validate root existence and iteration feasibility
+if (fx0*fx1) > 0 || params.maxit <= 0               % Validate root existence and proper max_iter
     info.flag = 1; 
     root = false;
     return 
@@ -49,23 +50,22 @@ if abs(fx0) < abs(fx1)                              % swap(x0, x1) s.t. f(x0) > 
     [x1, x0] = deal(x0, x1);
     fx1 = fx0;
 end
-x2 = x0;                                            % s.t. f(x0) > f(x1) < f(x2)
+x2 = x0;                                            % f(x0) > f(x1) < f(x2)
 prev_x0 = x0;                                       % Previous points for bisection criteria
 prev_x1 = x1; 
-prev_fx = fx1;
-step = 0;                                           % Successive interpolation steps                 
+prev_fx = fx1;             
 while abs(x1-x0) > params.root_tol && info.it <= params.maxit
-    info.it = info.it + 1;                          % Repeat until convergence or above max iteration
+    info.it = info.it + 1;                          
     fx0 = func(x0); 
     fx1 = func(x1); 
     fx2 = func(x2);
-    if fx0 ~= fx2 && fx1 ~= fx2                     
-        L0 = (x0*fx1*fx2) / ((fx0-fx1) * (fx0-fx2));% Inverse quadtratic interporlation (IQI)
+    if fx0 ~= fx2 && fx1 ~= fx2                     % Inverse quadtratic interporlation (IQI)
+        L0 = (x0*fx1*fx2) / ((fx0-fx1) * (fx0-fx2));
         L1 = (x1*fx0*fx2) / ((fx1-fx0) * (fx1-fx2));
         L2 = (x2*fx0*fx1) / ((fx2-fx0) * (fx2-fx1));
         new = L0 + L1 + L2;
-    else                                            
-        new = x1 - (fx1 * ((x1-x0) / (fx1-fx0)));   % Linear Interpolation (Secant Method)
+    else                                            % Linear Interpolation (Secant Method)
+        new = x1 - (fx1 * ((x1-x0) / (fx1-fx0)));   
     end
     fnew = func(new);
     if (fx0*fnew) < 0                               % Get opposite direction point
@@ -79,19 +79,19 @@ while abs(x1-x0) > params.root_tol && info.it <= params.maxit
         fnew = func(new);
         step = 0;
     end
-    if abs(fnew) < params.func_tol                  % Stop if value is converged
+    if abs(fnew) < params.func_tol                  % Stop if f(x) is converged
         break
     end
-    if abs(fnew) < abs(fx1)                         % s.t. previous fx < current fx 
+    if abs(fnew) < abs(fx1)                         % previous fx < current fx always
         prev_fx = fnew;
     end
     x2 = x1;
-    if (fx0*fnew) < 0                               % s.t. f(x0) is always at opposite side of f(x1)
+    if (fx0*fnew) < 0                               % f(x0) is always at opposite side of f(x1)
         x1 = new;
     else
         x0 = new;
     end
-    if abs(fx0) < abs(fx1)                          % swap(x0, x1) s.t. f(x0) > f(x1) always
+    if abs(fx0) < abs(fx1)                          
         [x1, x0] = deal(x0 , x1);
     end
     if step == 0                                    % Update previous points right after bisection
