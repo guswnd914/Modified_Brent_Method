@@ -95,7 +95,8 @@ while abs(x1-x0) > params.root_tol && info.it <= params.maxit
         [x1, x0] = deal(x0 , x1);
     end
     if step == 0                                    % Update previous points right after bisection
-        prev_x0 = x0; prev_x1 = x1;
+        prev_x0 = x0; 
+        prev_x1 = x1;
     end
 end
 info.flag = info.it > params.maxit;                 % Exceeded max iteration? Yes = Failed = 1, No = Succeed = 0
